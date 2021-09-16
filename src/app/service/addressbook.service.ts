@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AddressBooksData } from '../AddressBookData'
+import { AddressBookData } from '../AddressBookData'
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +15,20 @@ export class AddressbookService {
     console.log("Inside Service");
    }
 
-  getAddressBookData(): Observable<AddressBooksData[]>{
-    return this.http.get<AddressBooksData[]>(`http://localhost:8082/addressbook/persons`);
+  getAddressBookData(): Observable<AddressBookData[]>{
+    return this.http.get<AddressBookData[]>(`http://localhost:8082/addressbook/persons`);
+  }
+
+  getPerson(id: number): Observable<any> {
+    return this.http.get(`http://localhost:8082/addressbook/person/${id}`);
   }
 
   createPerson(person: Object): Observable<Object> {
     return this.http.post(`http://localhost:8082/addressbook/create`, person);
+  }
+
+  updatePerson(id: number, value: any): Observable<Object> {
+    return this.http.put(`http://localhost:8082/addressbook/update/${id}`, value);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AddressBooksData } from '../AddressBookData';
+import { AddressBookData } from '../AddressBookData';
 import { AddressbookService } from '../service/addressbook.service';
 
 @Component({
@@ -11,7 +11,9 @@ import { AddressbookService } from '../service/addressbook.service';
 })
 export class HomePageComponent implements OnInit {
 
-  persons!: Observable<AddressBooksData[]>;
+  persons!: Observable<AddressBookData[]>;
+  person: AddressBookData = new AddressBookData();
+  id:any;
 
   constructor(private addrService: AddressbookService, private router: Router) { }
 
@@ -34,4 +36,8 @@ export class HomePageComponent implements OnInit {
         })
   }
 
+  updatePerson(id: number) {
+    console.log("inside update");
+    this.router.navigate(['update', id])
+  }
 }

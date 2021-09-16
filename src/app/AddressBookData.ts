@@ -1,4 +1,4 @@
-export class AddressBooksData{
+export class AddressBookData{
     personId!: number;
     address!:string;
     city!:string;
