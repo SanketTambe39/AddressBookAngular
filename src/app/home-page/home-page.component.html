@@ -1,17 +1,10 @@
-<header class="header-content header">
-    <div class="logo-content">
-        <img src="../assets/icons/addressBook.png" alt="logo" />
-        <div>
-            <span class="addressBook-text">Address</span><br />
-            <span class="addressBook-text addressBook-book">Book</span>
-        </div>
-    </div>
-</header>
+
 <div class="main-content">
     <div class="main-header-content">
         <div class="addressbook-detail-text">
             Person Details <div class="contact-count"></div>
         </div>
+        <input type="search" matInput placeholder="Search">
         <a routerLink="/add" routerLinkActive="router-link-active" class="add-button">
             <img src="../assets/icons/add-24px.svg" alt="">Add Person
         </a>
@@ -20,7 +13,9 @@
 <div class="main-content">
     <div class="table-main">
         <table id="table-display" class="table">
+            
             <tr>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Address</th>
                 <th>City</th>
@@ -28,17 +23,18 @@
                 <th>Zip Code</th>
                 <th>Phone Number</th>
             </tr>
-            <tr>
-                <td>Sanket tambe</td>
+            <tr *ngFor="let personData of persons |async">
+                <td>{{personData.personId}}</td>
+                <td>{{personData.fullName}}</td>
                 <td>
-                    Cidco
+                    {{personData.address}}
                 </td>
-                <td>Nashik</td>
-                <td>Maharashtra</td>
-                <td>422008</td>
-                <td>8554038336</td>
+                <td>{{personData.city}}</td>
+                <td>{{personData.state}}</td>
+                <td>{{personData.zipcode}}</td>
+                <td>{{personData.phoneNumber}}</td>
                 <td>
-                    <img src="../assets/icons/delete-black-18dp.svg" alt="delete" >
+                    <img (click) = "deletePerson(personData.personId)" src="../assets/icons/delete-black-18dp.svg" alt="delete" >
                     <img src="../assets/icons/create-black-18dp.svg" alt="update">
                 </td>
             </tr>

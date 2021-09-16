@@ -1,14 +1,5 @@
-<header class="header-content header">
-    <div class="logo-content">
-        <img src="../assets/icons/addressBook.png" alt="logo" />
-        <div>
-            <span class="addressBook-text">Address</span><br />
-            <span class="addressBook-text addressBook-book">Book</span>
-        </div>
-    </div>
-</header>
 <div class="form-content">
-    <form action="#" class="form">
+    <form (ngSubmit)="onSubmit()" class="form">
         <div class="form-head">
             <div class="form-head-text">Person Address Form</div>
             <a href=""><img class="form-head-image" src="../assets/icons/cancel.png"
@@ -16,29 +7,30 @@
         </div>
         <div class="form-constrains">
             <div class="row-content">
-                <label for="name" class="label text">Full Name</label>
+                <label for="name"  class="label text">Full Name</label>
                 <br>
-                <input type="text" class="input" id="name" name="name" placeholder="Enter Your Name here" required>
+                <input type="text" [(ngModel)]="person.fullName" class="input" id="name" name="name" placeholder="Enter Your Name here" required>
             </div>
             <div class="row-content">
-                <label for="phoneNumber" class="label text">Phone Number</label>
+                <label for="phoneNumber"  class="label text">Phone Number</label>
                 <br>
-                <input type="tel" class="input" id="phoneNumber" name="phoneNumber" placeholder="Enter Your Number here"
+                <input type="tel" [(ngModel)]="person.phoneNumber" class="input" id="phoneNumber" name="phoneNumber" placeholder="Enter Your Number here"
                     required>
             </div>
             <div class="row-content">
                 <label for="address" class="label text">Address</label>
                 <br>
-                <textarea name="address" id="address" required></textarea>
+                <textarea name="address" [(ngModel)]="person.address" id="address" required></textarea>
             </div>
             <div class="row-content">
                 <div class="column-constrains">
                     <div class="column-content">
                         <label for="city" class="label text">City</label>
                         <br>
-                        <select name="city" id="city" required>
+                        <select name="city" id="city" [(ngModel)]="person.city" required>
                             <option value="Select City"></option>
                             <option value="Mumbai">Mumbai</option>
+                            <option value="Mumbai">Nashik</option>
                             <option value="Delhi">Delhi</option>
                             <option value="Bangalore">Bangalore</option>
                             <option value="Hyderabad">Hyderabad</option>
@@ -54,7 +46,7 @@
                     <div class="column-content">
                         <label for="state" class="label text">State</label>
                         <br>
-                        <select name="state" id="state">
+                        <select name="state" [(ngModel)]="person.state" id="state">
                             <option value="Select State"></option>
                             <option value="Andhra Pradesh">Andhra Pradesh</option>
                             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -97,7 +89,7 @@
                     <div class="column-content">
                         <label for="zip" class="label text">Zip code</label>
                         <br>
-                        <input type="text" class="input" id="zip" name="zip" required>
+                        <input type="text" [(ngModel)]="person.zipcode" class="input" id="zip" name="zip" required>
                     </div>
                 </div>
             </div>
@@ -106,3 +98,4 @@
                 <button type="reset" class="button button-text" id="resetButton">Reset</button>
             </div>
         </div>
+    </form>
